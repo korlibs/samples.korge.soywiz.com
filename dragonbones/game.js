@@ -1,8 +1,8 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd)
-    define(['exports', 'kotlin', 'korge-js', 'korinject-js', 'korma-js', 'korim-js', 'korio-js', 'korge-dragonbones-js', 'kds-js'], factory);
+    define(['exports', 'kotlin', 'korge-js', 'korinject-js', 'korui-js', 'korma-js', 'korim-js', 'korio-js', 'korge-dragonbones-js', 'kds-js'], factory);
   else if (typeof exports === 'object')
-    factory(module.exports, require('kotlin'), require('korge-js'), require('korinject-js'), require('korma-js'), require('korim-js'), require('korio-js'), require('korge-dragonbones-js'), require('kds-js'));
+    factory(module.exports, require('kotlin'), require('korge-js'), require('korinject-js'), require('korui-js'), require('korma-js'), require('korim-js'), require('korio-js'), require('korge-dragonbones-js'), require('kds-js'));
   else {
     if (typeof kotlin === 'undefined') {
       throw new Error("Error loading module 'game'. Its dependency 'kotlin' was not found. Please, check whether 'kotlin' is loaded prior to 'game'.");
@@ -12,6 +12,9 @@
     }
     if (typeof this['korinject-js'] === 'undefined') {
       throw new Error("Error loading module 'game'. Its dependency 'korinject-js' was not found. Please, check whether 'korinject-js' is loaded prior to 'game'.");
+    }
+    if (typeof this['korui-js'] === 'undefined') {
+      throw new Error("Error loading module 'game'. Its dependency 'korui-js' was not found. Please, check whether 'korui-js' is loaded prior to 'game'.");
     }
     if (typeof this['korma-js'] === 'undefined') {
       throw new Error("Error loading module 'game'. Its dependency 'korma-js' was not found. Please, check whether 'korma-js' is loaded prior to 'game'.");
@@ -28,9 +31,9 @@
     if (typeof this['kds-js'] === 'undefined') {
       throw new Error("Error loading module 'game'. Its dependency 'kds-js' was not found. Please, check whether 'kds-js' is loaded prior to 'game'.");
     }
-    root.game = factory(typeof game === 'undefined' ? {} : game, kotlin, this['korge-js'], this['korinject-js'], this['korma-js'], this['korim-js'], this['korio-js'], this['korge-dragonbones-js'], this['kds-js']);
+    root.game = factory(typeof game === 'undefined' ? {} : game, kotlin, this['korge-js'], this['korinject-js'], this['korui-js'], this['korma-js'], this['korim-js'], this['korio-js'], this['korge-dragonbones-js'], this['kds-js']);
   }
-}(this, function (_, Kotlin, $module$korge_js, $module$korinject_js, $module$korma_js, $module$korim_js, $module$korio_js, $module$korge_dragonbones_js, $module$kds_js) {
+}(this, function (_, Kotlin, $module$korge_js, $module$korinject_js, $module$korui_js, $module$korma_js, $module$korim_js, $module$korio_js, $module$korge_dragonbones_js, $module$kds_js) {
   'use strict';
   var $$importsForInline$$ = _.$$importsForInline$$ || (_.$$importsForInline$$ = {});
   var korge = $module$korge_js.com.soywiz.korge;
@@ -38,6 +41,7 @@
   var COROUTINE_SUSPENDED = Kotlin.kotlin.coroutines.intrinsics.COROUTINE_SUSPENDED;
   var Module = $module$korge_js.com.soywiz.korge.scene.Module;
   var getKClass = Kotlin.getKClass;
+  var LightQuality = $module$korui_js.com.soywiz.korui.light.LightQuality;
   var SizeInt = $module$korma_js.com.soywiz.korma.geom.SizeInt;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var throwUPAE = Kotlin.throwUPAE;
@@ -88,12 +92,18 @@
     MyModule_instance = this;
     Module.call(this);
     this.mainScene_hwinxz$_0 = getKClass(MyScene);
+    this.quality_8uxawl$_0 = LightQuality.QUALITY;
     this.size_tqni09$_0 = new SizeInt(1280, 720);
     this.windowSize_17e76h$_0 = new SizeInt(1280, 720);
   }
   Object.defineProperty(MyModule.prototype, 'mainScene', {
     get: function () {
       return this.mainScene_hwinxz$_0;
+    }
+  });
+  Object.defineProperty(MyModule.prototype, 'quality', {
+    get: function () {
+      return this.quality_8uxawl$_0;
     }
   });
   function MyModule$init$lambda($receiver, continuation_0, suspended) {
@@ -718,7 +728,7 @@
             this.local$$receiver.plusAssign_l5rad2$($receiver_1);
             var $receiver_2 = new Button('Skin Changing', MyScene$sceneInit$lambda_1(mySceneContainer, this.$this));
             var y_1 = this.$this.views.virtualHeight - 48 | 0;
-            $receiver_2.x = numberToDouble(400);
+            $receiver_2.x = numberToDouble(410);
             $receiver_2.y = numberToDouble(y_1);
             this.local$$receiver.plusAssign_l5rad2$($receiver_2);
             var tmp$, tmp$_0;

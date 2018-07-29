@@ -14,6 +14,7 @@ import com.soywiz.korinject.*
 import com.soywiz.korio.serialization.json.*
 import com.soywiz.korma.geom.*
 import com.soywiz.korma.random.*
+import com.soywiz.korui.light.*
 import kotlin.math.*
 
 //fun main(args: Array<String>): Unit = Korio {
@@ -35,6 +36,8 @@ fun main(args: Array<String>): Unit {
 
 object MyModule : Module() {
     override val mainScene = MyScene::class
+    override val quality: LightQuality = LightQuality.QUALITY
+
     override suspend fun init(injector: AsyncInjector) {
         injector
             .mapPrototype { MyScene() }
