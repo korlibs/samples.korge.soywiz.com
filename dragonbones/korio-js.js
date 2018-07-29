@@ -437,8 +437,8 @@
   NodeVfs.prototype.constructor = NodeVfs;
   UrlVfs$open$ObjectLiteral.prototype = Object.create(AsyncStreamBase.prototype);
   UrlVfs$open$ObjectLiteral.prototype.constructor = UrlVfs$open$ObjectLiteral;
-  UrlVfs_2.prototype = Object.create(Vfs.prototype);
-  UrlVfs_2.prototype.constructor = UrlVfs_2;
+  UrlVfs_1.prototype = Object.create(Vfs.prototype);
+  UrlVfs_1.prototype.constructor = UrlVfs_1;
   ZipVfs$Impl.prototype = Object.create(Vfs.prototype);
   ZipVfs$Impl.prototype.constructor = ZipVfs$Impl;
   Language_0.prototype = Object.create(Enum.prototype);
@@ -23318,10 +23318,10 @@
     return $this;
   }
   function defaultUniSchema$lambda(it) {
-    return UrlVfs_1(it);
+    return UrlVfs_0(it);
   }
   function defaultUniSchema$lambda_0(it) {
-    return UrlVfs_1(it);
+    return UrlVfs_0(it);
   }
   function defaultUniSchema$lambda_1(it) {
     return get_rootLocalVfs().get_61zpoe$(it.path);
@@ -23341,18 +23341,17 @@
       base = null;
     return UniversalVfs_getInstance().invoke_rjr2vy$($receiver, providers, base);
   }
-  function UrlVfs(url) {
-    return UrlVfs_1(URI$Companion_getInstance().invoke_61zpoe$(url));
-  }
-  function UrlVfs_0(url, client) {
-    return UrlVfs_1(URI$Companion_getInstance().invoke_61zpoe$(url), client);
-  }
-  function UrlVfs_1(url, client) {
+  function UrlVfs(url, client) {
     if (client === void 0)
       client = createHttpClient();
-    return (new UrlVfs_2(url.copy_82mkos$(void 0, void 0, void 0, void 0, '', null).fullUri, Unit, client)).get_61zpoe$(url.path);
+    return UrlVfs_0(URI$Companion_getInstance().invoke_61zpoe$(url), client);
   }
-  function UrlVfs_2(url, dummy, client) {
+  function UrlVfs_0(url, client) {
+    if (client === void 0)
+      client = createHttpClient();
+    return (new UrlVfs_1(url.copy_82mkos$(void 0, void 0, void 0, void 0, '', null).fullUri, Unit, client)).get_61zpoe$(url.path);
+  }
+  function UrlVfs_1(url, dummy, client) {
     if (client === void 0)
       client = createHttpClient();
     Vfs.call(this);
@@ -23361,12 +23360,12 @@
     this.client = client;
     this.absolutePath_lqyott$_0 = this.url;
   }
-  Object.defineProperty(UrlVfs_2.prototype, 'absolutePath', {
+  Object.defineProperty(UrlVfs_1.prototype, 'absolutePath', {
     get: function () {
       return this.absolutePath_lqyott$_0;
     }
   });
-  UrlVfs_2.prototype.getFullUrl_61zpoe$ = function (path) {
+  UrlVfs_1.prototype.getFullUrl_61zpoe$ = function (path) {
     return trim(this.url, Kotlin.charArrayOf(47)) + String.fromCharCode(toBoxedChar(47)) + trim(path, Kotlin.charArrayOf(47));
   };
   function UrlVfs$open$ObjectLiteral(this$UrlVfs, closure$fullUrl, closure$stat) {
@@ -23492,7 +23491,7 @@
     kind: Kind_CLASS,
     interfaces: [AsyncStreamBase]
   };
-  UrlVfs_2.prototype.open_vb0dls$ = function (path_0, mode, continuation_0, suspended) {
+  UrlVfs_1.prototype.open_vb0dls$ = function (path_0, mode, continuation_0, suspended) {
     var instance = new Coroutine$open_vb0dls$_2(this, path_0, mode, continuation_0);
     if (suspended)
       return instance;
@@ -23549,7 +23548,7 @@
       }
      while (true);
   };
-  UrlVfs_2.prototype.openInputStream_61zpoe$ = function (path_0, continuation_0, suspended) {
+  UrlVfs_1.prototype.openInputStream_61zpoe$ = function (path_0, continuation_0, suspended) {
     var instance = new Coroutine$openInputStream_61zpoe$(this, path_0, continuation_0);
     if (suspended)
       return instance;
@@ -23597,7 +23596,7 @@
       }
      while (true);
   };
-  UrlVfs_2.prototype.readRange_fmne7s$ = function (path_0, range_0, continuation_0, suspended) {
+  UrlVfs_1.prototype.readRange_fmne7s$ = function (path_0, range_0, continuation_0, suspended) {
     var instance = new Coroutine$readRange_fmne7s$_1(this, path_0, range_0, continuation_0);
     if (suspended)
       return instance;
@@ -23654,7 +23653,7 @@
     simpleName: 'HttpHeaders',
     interfaces: [Vfs$Attribute]
   };
-  UrlVfs_2.prototype.put_18ksq8$$default = function (path_0, content_0, attributes_0, continuation_0, suspended) {
+  UrlVfs_1.prototype.put_18ksq8$$default = function (path_0, content_0, attributes_0, continuation_0, suspended) {
     var instance = new Coroutine$put_18ksq8$$default_1(this, path_0, content_0, attributes_0, continuation_0);
     if (suspended)
       return instance;
@@ -23755,7 +23754,7 @@
       }
      while (true);
   };
-  UrlVfs_2.prototype.stat_61zpoe$ = function (path_0, continuation_0, suspended) {
+  UrlVfs_1.prototype.stat_61zpoe$ = function (path_0, continuation_0, suspended) {
     var instance = new Coroutine$stat_61zpoe$_3(this, path_0, continuation_0);
     if (suspended)
       return instance;
@@ -23812,10 +23811,10 @@
       }
      while (true);
   };
-  UrlVfs_2.prototype.toString = function () {
+  UrlVfs_1.prototype.toString = function () {
     return 'UrlVfs';
   };
-  UrlVfs_2.$metadata$ = {
+  UrlVfs_1.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'UrlVfs',
     interfaces: [Vfs]
@@ -43806,12 +43805,13 @@
     return this.localVfs_61zpoe$(this.tmpdir);
   };
   KorioNative.prototype.localVfs_61zpoe$ = function (path) {
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1;
     if (get_isNodeJs())
-      tmp$ = (new NodeJsLocalVfs()).get_61zpoe$(path);
-    else
-      tmp$ = UrlVfs(path);
-    return tmp$;
+      tmp$_1 = (new NodeJsLocalVfs()).get_61zpoe$(path);
+    else {
+      tmp$_1 = UrlVfs((tmp$_0 = (tmp$ = document.location) != null ? tmp$.href : null) != null ? tmp$_0 : '.').get_61zpoe$(path);
+    }
+    return tmp$_1;
   };
   Object.defineProperty(KorioNative.prototype, 'tmpdir', {
     get: function () {
@@ -46840,11 +46840,10 @@
   package$std.plus_lkui5v$ = plus_4;
   package$std.get_uniVfs_pdl1vz$ = get_uniVfs;
   package$std.uniVfs_rgq6yn$ = uniVfs;
-  package$std.UrlVfs_61zpoe$ = UrlVfs;
-  package$std.UrlVfs_at2g62$ = UrlVfs_0;
-  package$std.UrlVfs_arpgxl$ = UrlVfs_1;
-  UrlVfs_2.HttpHeaders = UrlVfs$HttpHeaders;
-  package$std.UrlVfs = UrlVfs_2;
+  package$std.UrlVfs_at2g62$ = UrlVfs;
+  package$std.UrlVfs_arpgxl$ = UrlVfs_0;
+  UrlVfs_1.HttpHeaders = UrlVfs$HttpHeaders;
+  package$std.UrlVfs = UrlVfs_1;
   package$std.ZipVfs_wgdbw0$ = ZipVfs;
   package$std.ZipVfs_ws7jjr$ = ZipVfs_0;
   package$std.openAsZip_yirdke$ = openAsZip;
