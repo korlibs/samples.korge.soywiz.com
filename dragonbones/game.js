@@ -54,13 +54,10 @@
   var Text = $module$korge_js.com.soywiz.korge.view.Text;
   var Graphics = $module$korge_js.com.soywiz.korge.view.Graphics;
   var color = $module$korim_js.com.soywiz.korim.color;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
-  var std = $module$korio_js.com.soywiz.korio.file.std;
-  var UrlVfs = $module$korio_js.com.soywiz.korio.file.std.UrlVfs;
-  var throwCCE = Kotlin.throwCCE;
   var json = $module$korio_js.com.soywiz.korio.serialization.json;
   var ensureNotNull = Kotlin.ensureNotNull;
   var readBitmapOptimized = $module$korim_js.com.soywiz.korim.format.readBitmapOptimized_2axf5n$;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var listOf = Kotlin.kotlin.collections.listOf_i5x0yv$;
   var mipmaps = $module$korge_js.com.soywiz.korge.render.mipmaps_6tbmt4$;
   var MVector2 = $module$korma_js.com.soywiz.korma.MVector2;
@@ -71,6 +68,7 @@
   var numberToInt = Kotlin.numberToInt;
   var splice = $module$kds_js.com.soywiz.kds.splice_b7gcku$;
   var Rand = $module$korma_js.com.soywiz.korma.random.Rand;
+  var std = $module$korio_js.com.soywiz.korio.file.std;
   var KorgeDbFactory = $module$korge_dragonbones_js.com.soywiz.korge.dragonbones.KorgeDbFactory;
   MyModule.prototype = Object.create(Module.prototype);
   MyModule.prototype.constructor = MyModule;
@@ -1127,11 +1125,11 @@
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
     this.$this = $this;
+    this.local$tmp$ = void 0;
     this.local$tmp$_0 = void 0;
     this.local$tmp$_1 = void 0;
     this.local$tmp$_2 = void 0;
     this.local$tmp$_3 = void 0;
-    this.local$tmp$_4 = void 0;
     this.local$$receiver = $receiver_0;
   }
   Coroutine$sceneInit_st8p7j$_0.$metadata$ = {
@@ -1146,52 +1144,33 @@
       try {
         switch (this.state_0) {
           case 0:
-            var tmp$;
-            println(this.$this.resourcesRoot.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').absolutePath);
+            this.local$tmp$_0 = this.$this.factory;
+            this.local$tmp$ = json.Json;
             this.state_0 = 2;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').getUnderlyingUnscapedFile(this);
+            this.result_0 = this.$this.resources.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 1:
             throw this.exception_0;
           case 2:
-            println(this.result_0);
-            println(std.ResourcesVfs.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').absolutePath);
+            var data = this.local$tmp$_0.parseDragonBonesData_md6wsg$(ensureNotNull(this.local$tmp$.parse_61zpoe$(this.result_0)));
+            this.local$tmp$_3 = this.$this.factory;
+            this.local$tmp$_1 = json.Json;
             this.state_0 = 3;
-            this.result_0 = std.ResourcesVfs.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').getUnderlyingUnscapedFile(this);
+            this.result_0 = this.$this.resources.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_tex.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 3:
-            println(this.result_0);
-            println(std.ResourcesVfs.vfs);
-            println((Kotlin.isType(tmp$ = std.ResourcesVfs.vfs, UrlVfs) ? tmp$ : throwCCE()).url);
-            this.local$tmp$_1 = this.$this.factory;
-            this.local$tmp$_0 = json.Json;
+            this.local$tmp$_2 = ensureNotNull(this.local$tmp$_1.parse_61zpoe$(this.result_0));
             this.state_0 = 4;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_ske.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_tex.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 4:
-            var data = this.local$tmp$_1.parseDragonBonesData_md6wsg$(ensureNotNull(this.local$tmp$_0.parse_61zpoe$(this.result_0)));
-            this.local$tmp$_4 = this.$this.factory;
-            this.local$tmp$_2 = json.Json;
-            this.state_0 = 5;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_tex.json').readString_qa9gbo$(void 0, this);
-            if (this.result_0 === COROUTINE_SUSPENDED)
-              return COROUTINE_SUSPENDED;
-            continue;
-          case 5:
-            this.local$tmp$_3 = ensureNotNull(this.local$tmp$_2.parse_61zpoe$(this.result_0));
-            this.state_0 = 6;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('mecha_1002_101d_show/mecha_1002_101d_show_tex.png'), void 0, this);
-            if (this.result_0 === COROUTINE_SUSPENDED)
-              return COROUTINE_SUSPENDED;
-            continue;
-          case 6:
-            var atlas = this.local$tmp$_4.parseTextureAtlasData_go2jhv$(this.local$tmp$_3, this.result_0);
+            var atlas = this.local$tmp$_3.parseTextureAtlasData_go2jhv$(this.local$tmp$_2, this.result_0);
             var $receiver = ensureNotNull(this.$this.factory.buildArmatureDisplay_w74nik$('mecha_1002_101d'));
             $receiver.x = numberToDouble(0);
             $receiver.y = numberToDouble(300);
@@ -1260,7 +1239,7 @@
             this.local$tmp$_0 = this.$this.factory;
             this.local$tmp$ = json.Json;
             this.state_0 = 2;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('Dragon/Dragon_ske.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$('Dragon/Dragon_ske.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1271,14 +1250,14 @@
             this.local$tmp$_3 = this.$this.factory;
             this.local$tmp$_1 = json.Json;
             this.state_0 = 3;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('Dragon/Dragon_tex.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$('Dragon/Dragon_tex.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 3:
             this.local$tmp$_2 = ensureNotNull(this.local$tmp$_1.parse_61zpoe$(this.result_0));
             this.state_0 = 4;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('Dragon/Dragon_tex.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('Dragon/Dragon_tex.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1429,7 +1408,7 @@
             this.local$tmp$_0 = this.$this.factory;
             this.local$tmp$ = json.Json;
             this.state_0 = 2;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('shizuku/shizuku_ske.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$('shizuku/shizuku_ske.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1439,28 +1418,28 @@
             this.local$tmp$_0.parseDragonBonesData_md6wsg$(ensureNotNull(this.local$tmp$.parse_61zpoe$(this.result_0)), 'shizuku');
             this.local$tmp$_4 = this.$this.factory;
             this.state_0 = 3;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('shizuku/shizuku.1024/texture_00.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('shizuku/shizuku.1024/texture_00.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 3:
             this.local$tmp$_1 = mipmaps(this.result_0);
             this.state_0 = 4;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('shizuku/shizuku.1024/texture_01.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('shizuku/shizuku.1024/texture_01.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 4:
             this.local$tmp$_2 = mipmaps(this.result_0);
             this.state_0 = 5;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('shizuku/shizuku.1024/texture_02.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('shizuku/shizuku.1024/texture_02.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 5:
             this.local$tmp$_3 = mipmaps(this.result_0);
             this.state_0 = 6;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('shizuku/shizuku.1024/texture_03.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('shizuku/shizuku.1024/texture_03.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1581,7 +1560,7 @@
             this.local$tmp$_0 = this.$this.factory;
             this.local$tmp$ = json.Json;
             this.state_0 = 2;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('you_xin/body/body_ske.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$('you_xin/body/body_ske.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1592,14 +1571,14 @@
             this.local$tmp$_3 = this.$this.factory;
             this.local$tmp$_1 = json.Json;
             this.state_0 = 3;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$('you_xin/body/body_tex.json').readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$('you_xin/body/body_tex.json').readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 3:
             this.local$tmp$_2 = ensureNotNull(this.local$tmp$_1.parse_61zpoe$(this.result_0));
             this.state_0 = 4;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$('you_xin/body/body_tex.png'), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$('you_xin/body/body_tex.png'), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1633,7 +1612,7 @@
             this.local$tmp$_8 = this.$this.factory;
             this.local$tmp$_7 = json.Json;
             this.state_0 = 7;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$(dragonBonesJSONPath).readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$(dragonBonesJSONPath).readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1642,14 +1621,14 @@
             this.local$tmp$_11 = this.$this.factory;
             this.local$tmp$_9 = json.Json;
             this.state_0 = 8;
-            this.result_0 = this.$this.resourcesRoot.get_61zpoe$(this.local$textureAtlasJSONPath).readString_qa9gbo$(void 0, this);
+            this.result_0 = this.$this.resources.get_61zpoe$(this.local$textureAtlasJSONPath).readString_qa9gbo$(void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
           case 8:
             this.local$tmp$_10 = ensureNotNull(this.local$tmp$_9.parse_61zpoe$(this.result_0));
             this.state_0 = 9;
-            this.result_0 = readBitmapOptimized(this.$this.resourcesRoot.get_61zpoe$(this.local$textureAtlasPath), void 0, this);
+            this.result_0 = readBitmapOptimized(this.$this.resources.get_61zpoe$(this.local$textureAtlasPath), void 0, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -1708,6 +1687,7 @@
   };
   function BaseDbScene() {
     Scene.call(this);
+    this.resources = std.ResourcesVfs;
     this.factory = new KorgeDbFactory();
   }
   BaseDbScene.$metadata$ = {
